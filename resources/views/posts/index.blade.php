@@ -20,7 +20,11 @@
 </head>
 <body>
   <div class="container">
-    <h1>Lara Blog</h1>
+    <h1>
+      Lara Blog
+      <a class="btn btn-success" href="{{ url('posts/create') }}">+ Buat Postingan</a>
+    </h1>
+    
     <div>
       @foreach($posts as $post)
       @php($post = explode(",", $post))

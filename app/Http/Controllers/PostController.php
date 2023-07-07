@@ -14,7 +14,7 @@ class PostController extends Controller
     {
         $posts = Storage::get('posts.txt');
         $posts = explode("\n", $posts);
-        // dd($posts); //dumb die debug
+        // dd($posts); //dumb die
         $view_data = [
             'posts' => $posts
         ];
@@ -35,7 +35,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $title = $request->input('title');
+        $content = $request->input('content');
         
+        $posts = Storage::get('posts.txt');
+        $posts = explode("\n", $posts);
+
+        $new_post = [
+            count($posts)+1, 
+            $title,
+            $content,
+            date('Y-m-d H:i:s')
+        ];
+
+        $new_post = implode(',', $new_post);
+
+        array_push($posts, $new_post);
+
+        $posts = implode("\n", $posts);
+
+        Storage::write('posts.txt', $posts);
+        
+        return redirect('posts');
     }
 
     /**

@@ -12,14 +12,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $posts = Storage::get('posts.txt');
-        // echo $posts;
-        // exit;
+        $posts = Storage::get('posts.txt');
+        $posts = explode("\n", $posts);
+        // dd($posts); //dumb die debug
         $view_data = [
-            'posts' => [
-                ['Mengenal Laravel', 'Ini adalah blog tentang pengenalan laravel'],
-                ['Tentang Codepolitan', 'Ini adalah blog tentang Codepolitan'],
-            ]
+            'posts' => $posts
         ];
 
         return view('posts.index', $view_data);
@@ -46,7 +43,23 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        echo "Halaman detail dari post. ID: $id";
+        $posts = Storage::get('posts.txt');
+        $posts = explode("\n", $posts);
+        
+        $selected_post = Array();
+
+        foreach($posts as $post) {
+            $post = explode(",", $post);
+            if($post[0] == $id) {
+                $selected_post = $post;
+            }
+        }
+
+        $view_data = [
+            'post' => $selected_post    
+        ];
+
+        return view('posts.show', $view_data);
     }
 
     /**

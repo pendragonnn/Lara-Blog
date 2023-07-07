@@ -23,12 +23,13 @@
     <h1>Lara Blog</h1>
     <div>
       @foreach($posts as $post)
-      <div class="card" style="width: 18rem;">
+      @php($post = explode(",", $post))
+      <div class="card mb-3" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">{{ $post[0] }}</h5>
-          <p class="card-text">{{ $post[0] }}</p>
-          <p class="card-text"><small class="text-muted">Last update 3 minutes ago</small></p>
-          <a href="#" class="btn btn-primary">Selengkapnya</a>
+          <h5 class="card-title">{{ $post[1] }}</h5>
+          <p class="card-text">{{ $post[2] }}</p>
+          <p class="card-text"><small class="text-muted">Last updated at {{ date('d M Y H:i', strtotime($post[3])) }} </small></p>
+          <a href="{{ url("posts/{$post[0]}") }}" class="btn btn-primary">Selengkapnya</a>
         </div>
       </div>
       @endforeach

@@ -13,13 +13,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Storage::get('posts.txt');
-        $posts = explode("\n", $posts);
-        // dd($posts); //dumb die
-        $view_data = [
-            'posts' => $posts
-        ];
+        $posts = DB::table('posts')
+            ->select('id', 'title', 'content', 'created_at')
+            ->get();
 
+        $view_data = [
+            'posts' => $posts,    
+        ];
         return view('posts.index', $view_data);
     }
 

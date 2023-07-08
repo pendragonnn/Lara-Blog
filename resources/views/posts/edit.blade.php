@@ -23,5 +23,10 @@
     </div>
     <button type="submit" class="btn btn-primary">simpan</button>
   </form>
+  <form action="{{ url('posts/'.$post->id) }}" method="POST">
+    @method('DELETE')
+    @csrf
+    <button type="submit" class="btn btn-danger">hapus</button>
+  </form>
 </body>
 </html>

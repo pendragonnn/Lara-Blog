@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -13,9 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')
-            ->select('id', 'title', 'content', 'created_at')
-            ->get();
+        $posts = Post::active()->get();
 
         $view_data = [
             'posts' => $posts,    

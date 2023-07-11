@@ -24,6 +24,9 @@ Route::get('login', [AuthController::class, 'login']);
 Route::post('login', [AuthController::class, 'authentication']);
 Route::get('logout', [AuthController::class, 'logout']);
 
+Route::get('register', [AuthController::class, 'register_form']);
+Route::post('register', [AuthController::class, 'register']);
+
 Route::get('posts', [PostController::class, 'index']);
 
 Route::get('posts/create', [PostController::class, 'create']);

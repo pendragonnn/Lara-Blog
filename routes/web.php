@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'authentication']);
+Route::get('logout', [AuthController::class, 'logout']);
 
 Route::get('posts', [PostController::class, 'index']);
 

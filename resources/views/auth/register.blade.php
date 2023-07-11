@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login')
+@section('title', 'Daftar')
 
 @section('content')
   <div class="row">
@@ -21,14 +21,29 @@
           <div class="mb-3">
             <label for="name" class="form-label">Nama</label>
             <input type="text" class="form-control" id="name" name="name">
+            @if($errors->has('name'))
+            <div>
+              <span class="text-danger">{{ $errors->first('name') }}</span>
+            </div>
+            @endif
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email">
+            @if($errors->has('email'))
+            <div>
+              <span class="text-danger">{{ $errors->first('email') }}</span>
+            </div>
+            @endif
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password">
+            @if($errors->has('password'))
+            <div>
+              <span class="text-danger">{{ $errors->first('password') }}</span>
+            </div>
+            @endif
           </div>
           <div class="mb-3">
             <label for="password_confirmation" class="form-label">Konfirmasi Password</label>

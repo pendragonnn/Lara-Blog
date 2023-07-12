@@ -17,7 +17,7 @@
     </div>
     <button type="submit" class="btn btn-primary">simpan</button>
   </form>
-  <form action="{{ url('posts/'.$post->id) }}" method="POST">
+  <form action="{{ url('posts/'.$post->id) }}" method="POST" class="container mt-3">
     @method('DELETE')
     @csrf
     <button type="submit" class="btn btn-danger">hapus</button>

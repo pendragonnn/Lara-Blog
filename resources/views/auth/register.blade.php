@@ -8,7 +8,7 @@
 
     <div class="card col-md-4">
       <div class="card-body">
-        <h1 class="text-center">Register</h1>
+        <h1 class="text-center">Daftar</h1>
 
         @if(session()->has('error_message'))
           <div class="alert alert-danger">

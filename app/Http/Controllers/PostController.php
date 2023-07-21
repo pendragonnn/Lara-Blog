@@ -122,14 +122,19 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
         if(!Auth::check()){
             return redirect('login');
         } 
-        
-        Post::where('id', $id)->delete();
 
-        return redirect('posts');
+        $confirm = $request->input('confirm');
+
+        if($confirm == 'konfirmasi') {
+            Post::where('id', $id)->delete();
+            return redirect('posts');
+        } else {
+            return redirect("posts/{$id}/edit");
+        }
     }
 }
